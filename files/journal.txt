@@ -1,0 +1,3 @@
+1: I started learning design patterns in java today
+2: I visited my aunt
+3: I played volleyball
