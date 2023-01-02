@@ -42,9 +42,8 @@ class HtmlElement {
 
 }
 
-class HtmlBuilder
-{
-   
+class HtmlBuilder {
+
     private String rootName;
     private HtmlElement root = new HtmlElement();
 
@@ -52,29 +51,33 @@ class HtmlBuilder
         this.rootName = rootName;
         root.name = rootName;
     }
-    public void addChild(String childname, String childText) {
+
+    public HtmlBuilder addChild(String childname, String childText) {
         HtmlElement e = new HtmlElement(childname, childText);
         root.elements.add(e);
+        return this;
     }
 
     public void clear() {
-        root  = new HtmlElement();
+        root = new HtmlElement();
         root.name = rootName;
     }
+
     @Override
     public String toString() {
         return root.toString();
     }
 
-    
 }
 
 public class Builder {
     public static void main(String[] args) {
-       HtmlBuilder builder = new HtmlBuilder("ul");
-       builder.addChild("li", "hello");
-       builder.addChild("li", "world");
-       System.out.println(builder);
+        HtmlBuilder builder = new HtmlBuilder("ul");
+        // fluent builder interface
+        builder
+        .addChild("li", "hello")
+        .addChild("li", "world");
+        System.out.println(builder);
 
     }
 }
